@@ -3,7 +3,9 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Word {
+    private static int chances = 6;
     private static int start = 0;
+    private static boolean isSolved = false;
     private static String word = "";
     private static String solvingWord = "";
     private static final String reset = "\u001B[0m";
@@ -30,6 +32,14 @@ public class Word {
         e.printStackTrace();
         }
         word = wordList.get((int) (Math.random() * 212 + 0.5)).toString().toUpperCase();
+    }
+
+    public static boolean isSolved() {
+        return isSolved;
+    }
+
+    public static int getChances() {
+        return chances;
     }
 
     public static String getWord() {    // wouldn't be used in an actual game
@@ -65,22 +75,25 @@ public class Word {
 
     /***
      * Method for guessing the word, taking into account valid input
-     * @param word
+     * @param term
      */
     public static void guess(String term) {
         String guess = term.toUpperCase();
+
         try {
             start = solvingWord.indexOf("_");
             if (!checkInput(guess)) {
-                System.out.println("Please put a valid word in the English Dictionary.");
+                System.out.println("Please put a valid 5-letter word in the English Dictionary.");
                 return;
             }
         } catch (IndexOutOfBoundsException e) {
+            System.out.println("Error");
             return;
         }
         
-        //clear();
+        clear();
         for (int i = 0; i < 5; i++) {
+            // System.out.println(1);
             if (word.substring(i, i+1).equals(guess.substring(i, i+1))) {
                 solvingWord = solvingWord.substring(0, start + i*2) + green + guess.substring(i, i + 1).toUpperCase() + reset + solvingWord.substring(start + i*2 + 1);
                 start += 9;
@@ -92,6 +105,13 @@ public class Word {
                 start += 11;
             }
         }
+
+        if (guess.equals(word)) {
+            isSolved = true;
+        }
+        
+        System.out.println(solvingWord);
+        chances--;
     }
 
     /***
@@ -132,6 +152,7 @@ public class Word {
     public static void play() {
         Word.getRandomWord();
         Word.createBlanks();
-        System.out.println("Word: "+ Word.getWord() + "\n" + Word.getSolvingWord());
+        // System.out.println("Word: "+ Word.getWord());    // test
+        System.out.println(Word.getSolvingWord());
     }
 }
