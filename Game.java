@@ -8,16 +8,6 @@ public class Game {
     static String guessWord;
 
     public static void main(String[] args) {
-        Word.getRandomWord();
-        Word.setWord("water");
-        Word.createBlanks();
-        // solving = Word.createBlanks();
-        //guessWord = sc.nextLine();
-        System.out.println(Word.getWord() + "\n" + Word.getSolvingWord());
-        Word.guess("aeiou");
-        Word.guess("fhifh");
-        Word.guess("faiet");
-        System.out.println(Word.getSolvingWord());
-        System.out.println(Word.checkInput("hello"));
+        Word.play();
     }
 }
