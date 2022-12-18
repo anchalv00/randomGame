@@ -1,13 +1,23 @@
+// i'm sorry ... i got too focused on this program
+
 import java.util.Scanner;
 
 public class Game {
-    Scanner sc = new Scanner(System.in);
-    static String word = "";
+    static Scanner sc = new Scanner(System.in);
     static String solving = "";
+    static String guessWord;
 
     public static void main(String[] args) {
-        word = Word.getWord();
-        solving = Word.createBlanks(word);
-        System.out.println(word + "\n" + solving);
+        Word.getRandomWord();
+        Word.setWord("water");
+        Word.createBlanks();
+        // solving = Word.createBlanks();
+        //guessWord = sc.nextLine();
+        System.out.println(Word.getWord() + "\n" + Word.getSolvingWord());
+        Word.guess("aeiou");
+        Word.guess("fhifh");
+        Word.guess("faiet");
+        System.out.println(Word.getSolvingWord());
+        System.out.println(Word.checkInput("hello"));
     }
 }
