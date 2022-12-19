@@ -1,4 +1,5 @@
 import javax.swing.JFrame;
+<<<<<<< HEAD
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -19,11 +20,17 @@ public class GameFrame extends JFrame {
     JButton button = new JButton("Enter");
 
 
+=======
+
+public class GameFrame extends JFrame {
+    
+>>>>>>> 1f2e2ec0a6ab7b3175c27a5c92412c49f860ba76
     GameFrame() {
 
         this.add(new GamePanel());
         this.setTitle("Modified Wordle");
         this.setDefaultCloseOperation((JFrame.EXIT_ON_CLOSE));
+<<<<<<< HEAD
         this.setResizable(true);
         this.pack();
         this.setVisible(true);
@@ -52,3 +59,11 @@ public class GameFrame extends JFrame {
 
     }
 }
+=======
+        this.setResizable(false);
+        this.pack();
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+    }
+}
+>>>>>>> 1f2e2ec0a6ab7b3175c27a5c92412c49f860ba76

@@ -26,4 +26,8 @@ public class Game {
       String ans = sc.nextLine();
       return (ans.equals("y") || ans.equals("yes")) ? true : (ans.equals("n") || ans.equals("no")) ? false : ask();
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 1f2e2ec0a6ab7b3175c27a5c92412c49f860ba76
