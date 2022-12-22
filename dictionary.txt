@@ -1830,6 +1830,7 @@ medal
 media
 meets
 melee
+mends
 menus
 mercy
 merge
@@ -2005,6 +2006,7 @@ props
 proud
 prove
 proxy
+prune
 psalm
 pulls
 pulse
@@ -2084,6 +2086,7 @@ ropes
 roses
 rough
 round
+rouse
 route
 royal
 rugby

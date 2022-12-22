@@ -38,6 +38,7 @@ public class GameFrame extends JFrame {
             public void actionPerformed(ActionEvent e){
                 String input = textField.getText();
                 label.setText(input);
+                Word.guess(input);
             }
         });
 

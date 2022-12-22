@@ -1,5 +1,3 @@
-// i'm sorry ... i got too focused on this program
-
 import java.util.Scanner;
 
 public class Game {
@@ -9,15 +7,31 @@ public class Game {
     public static void main(String[] args) {
       while (true) {
         Word.play();
+        Word.setWord("ANGER");
+        //System.out.println(Word.getWord());
         new GameFrame();  // WIP
-        while (Word.getChances() > 0 && !Word.isSolved()) {
+        while (Word.getChances() > 0 && Word.isSolved().equals("false")) {
           System.out.print("Word: ");
           Word.guess(sc.nextLine());
         }
 
-        System.out.println("Game Over. The word was " + Word.getWord() + ".\n");
+        switch (Word.isSolved()) {
+          case "true": {
+            Word.setPoints();
+            System.out.println("Game Over. You won! +1 point (Total: " + Word.getPoints() + ")");
+            break;
+          }
+          case "false": {
+            System.out.println("Game Over. The word was " + Word.getWord() + ".\n");
+            break;
+          }
+        }
+        
         if (!ask()) {
           System.exit(1);
+        } else {
+          Word.setChances(6);
+          Word.setIsSolved(false);
         }
       }
     }
@@ -26,8 +40,4 @@ public class Game {
       String ans = sc.nextLine();
       return (ans.equals("y") || ans.equals("yes")) ? true : (ans.equals("n") || ans.equals("no")) ? false : ask();
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1f2e2ec0a6ab7b3175c27a5c92412c49f860ba76

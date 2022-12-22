@@ -5,13 +5,14 @@ import java.util.ArrayList;
 public class Word {
     private static int chances = 6;
     private static int start = 0;
+    private static int points = 0;
     private static boolean isSolved = false;
     private static String word = "";
     private static String solvingWord = "";
-    private static final String reset = "\u001B[0m";
-    private static final String green = "\u001b[32m";
-    private static final String yellow = "\u001B[33m";
-    private static final String gray = "\u001b[30;1m";
+    private static final String RESET = "\u001B[0m";
+    private static final String GREEN = "\u001b[32m";
+    private static final String YELLOW = "\u001B[33m";
+    private static final String GRAY = "\u001b[30;1m";
     
     /***
      * Getters
@@ -34,8 +35,8 @@ public class Word {
         word = wordList.get((int) (Math.random() * 212 + 0.5)).toString().toUpperCase();
     }
 
-    public static boolean isSolved() {
-        return isSolved;
+    public static String isSolved() {
+        return "" + isSolved;
     }
 
     public static int getChances() {
@@ -44,6 +45,10 @@ public class Word {
 
     public static String getWord() {    // wouldn't be used in an actual game
         return word;
+    }
+
+    public static int getPoints() {
+        return points;
     }
 
     public static String getSolvingWord() {
@@ -56,6 +61,18 @@ public class Word {
      */
     public static void setWord(String input) {
         word = input.toUpperCase();
+    }
+
+    public static void setPoints() {
+        points++;
+    }
+
+    public static void setChances(int i) {
+        chances = i;
+    }
+
+    public static void setIsSolved(boolean b) {
+        isSolved = b;
     }
 
     /***
@@ -83,6 +100,8 @@ public class Word {
         try {
             start = solvingWord.indexOf("_");
             if (!checkInput(guess)) {
+                clear();
+                System.out.println(solvingWord);
                 System.out.println("Please put a valid 5-letter word in the English Dictionary.");
                 return;
             }
@@ -95,13 +114,13 @@ public class Word {
         for (int i = 0; i < 5; i++) {
             // System.out.println(1);
             if (word.substring(i, i+1).equals(guess.substring(i, i+1))) {
-                solvingWord = solvingWord.substring(0, start + i*2) + green + guess.substring(i, i + 1).toUpperCase() + reset + solvingWord.substring(start + i*2 + 1);
+                solvingWord = solvingWord.substring(0, start + i*2) + GREEN + guess.substring(i, i + 1).toUpperCase() + RESET + solvingWord.substring(start + i*2 + 1);
                 start += 9;
             } else if (word.contains(guess.substring(i, i+1))) {
-                solvingWord = solvingWord.substring(0, start + i*2) + yellow + guess.substring(i, i + 1).toUpperCase() + reset + solvingWord.substring(start + i*2 + 1);
+                solvingWord = solvingWord.substring(0, start + i*2) + YELLOW + guess.substring(i, i + 1).toUpperCase() + RESET + solvingWord.substring(start + i*2 + 1);
                 start += 9;
             } else {
-                solvingWord = solvingWord.substring(0, start + i*2) + gray + guess.substring(i, i + 1).toUpperCase() + reset + solvingWord.substring(start + i*2 + 1);
+                solvingWord = solvingWord.substring(0, start + i*2) + GRAY + guess.substring(i, i + 1).toUpperCase() + RESET + solvingWord.substring(start + i*2 + 1);
                 start += 11;
             }
         }
